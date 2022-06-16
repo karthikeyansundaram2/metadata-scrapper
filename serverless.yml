@@ -5,18 +5,17 @@ provider:
   runtime: nodejs14.x
   region: ap-south-1
 functions:
-  helloworld:
-      handler: src/functions/helloworld.handler
-      events:
-        - http:
-            path: metadataScrapper/helloworld
-            method: get
   url: 
     handler: src/functions/url.handler
     events: 
       - http:
           path: metadataScrapper/url
           method: post
-
+  scrap: 
+    handler: src/functions/scrap.handler
+    events: 
+      - http: 
+          path: metadataScrapper/scrap
+          method: post
 plugins: 
   - serverless-plugin-typescript
