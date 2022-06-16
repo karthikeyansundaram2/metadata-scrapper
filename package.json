@@ -25,12 +25,14 @@
     "@types/aws-lambda": "^8.10.100",
     "@types/serverless": "^3.12.7",
     "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1155.0",
     "cheerio": "^1.0.0-rc.11",
     "dotenv": "^16.0.1",
     "express": "^4.17.1",
     "request": "^2.88.2",
     "serverless": "^3.19.0",
     "serverless-plugin-typescript": "^2.1.2",
+    "uid": "^2.0.0",
     "url-metadata": "^2.5.0"
   }
 }
