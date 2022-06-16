@@ -11,29 +11,7 @@ export const handler = async (event: APIGatewayProxyEvent, context, callback: AP
     try {
         const reqBody = event?.body
         const parsedBody = JSON.parse(reqBody);
-        //    try{
-        //     const userStatusParams = {
-        //         TableName: "metadata",
-        //         KeyConditionExpression: "#url = :url", 
-        //         ExpressionAttributeNames: {
-        //             "#url": "url",
-        //         },
-        //         ExpressionAttributeValues: {
-        //             ":url": JSON.stringify(parsedBody?.url),
-        //         },
-        //         FilterExpression: "#url = :url"
-        //       };
-        //       await dynamo.scan(userStatusParams, function (err, data){
-        //         if (err) console.log("err while getting ", err)
-        //         if (data) console.log("success", data)
-        //       })
-        //     } catch(e) {
-        //         console.log("err", e);
-        //         callback(e)
-        //     }
         if (parsedBody?.url) {
-
-
             await getHtml(parsedBody?.url).then(async (html: string) => {
                 // getting response from the scrapped data
                 const response = await getScrappedData(parsedBody?.url, html)
@@ -46,10 +24,6 @@ export const handler = async (event: APIGatewayProxyEvent, context, callback: AP
                 callback(err);
             })
         
-
-
-        // calling promise to fetch html    
-
     } else {
         callback(null, {
             statusCode: 400,
@@ -131,6 +105,7 @@ export async function getScrappedData(url: string, html: string) {
 return response;
 }
 export function getHtml(url: string) {
+            // calling promise to fetch html    
     return new Promise((resolve, reject) => {
         request(url, function (error: object, response: object, responseHtml: object) {
             //if there was an error
